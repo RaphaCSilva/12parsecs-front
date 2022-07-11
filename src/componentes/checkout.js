@@ -17,7 +17,7 @@ export default function ProdutoComprar() {
     const config = {
         headers: {Authorization: `Bearer ${user.token}`}
     }
-    console.log(user.token);
+
     function enviaproback(){
       const response = axios.post(axiosURL, carrinho, config);
 

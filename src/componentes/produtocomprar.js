@@ -5,7 +5,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import MiniImages from "./mini-images";
 import axios from "axios";
 import UserContext from "./context";
-import userEvent from "@testing-library/user-event";
 
 export default function ProdutoComprar() {
   
@@ -13,7 +12,7 @@ export default function ProdutoComprar() {
  const [product, setProduct] = React.useState({});  
   const {idproduto} = useParams();
 
-  const {carrinho, setCarrinho, user} = useContext(UserContext);
+  const {carrinho, setCarrinho} = useContext(UserContext);
 
   let navigate = useNavigate();
 
@@ -27,7 +26,7 @@ export default function ProdutoComprar() {
     function recebeimg(img){
       setPrincipal(img);
     }
-    console.log(user.token);
+ 
     function montarobj(){
       
       const obj = {
