@@ -11,7 +11,7 @@ export default function ProdutoComprar() {
   
     const {carrinho, setCarrinho, user} = useContext(UserContext);
     
-    const axiosURL = `https://project12parsecs.herokuapp.com/checkout`
+    const axiosURL = `http://localhost:5000.com/checkout`
     let navigate = useNavigate();
     
     const config = {

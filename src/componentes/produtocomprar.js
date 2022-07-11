@@ -17,7 +17,7 @@ export default function ProdutoComprar() {
   let navigate = useNavigate();
 
     useEffect(() => {
-      const request = axios.get(`https://project12parsecs.herokuapp.com/products/${idproduto}`);
+      const request = axios.get(`http://localhost:5000.com/products/${idproduto}`);
       request.then( response => {
        setProduct(response.data);
       })

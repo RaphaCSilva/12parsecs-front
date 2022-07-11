@@ -38,7 +38,7 @@ export default function SignUp() {
       className: "inputDesabilitado",
     });
 
-    const URL = `https://project12parsecs.herokuapp.com/sign-up`;
+    const URL = `http://localhost:5000.com/sign-up`;
 
     axios
       .post(URL, {
