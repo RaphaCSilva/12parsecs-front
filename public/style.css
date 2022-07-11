@@ -1,0 +1,16 @@
+*{
+  box-sizing: border-box;
+}
+a{
+  text-decoration: none;
+}
+body{
+  background-color: #8C11BE;
+
+}
+.verde{
+  color: #03AC00;
+}
+.vermelho{
+  color: #C70000;
+}
