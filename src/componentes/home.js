@@ -19,7 +19,7 @@ export default function Home() {
     }
 
     useEffect(() => {
-      const request = axios.get(`http://localhost:5000.com/products`);
+      const request = axios.get(`https://project12parsecs.herokuapp.com/products`);
       request.then( response => {
         setProducts(response.data);
       })

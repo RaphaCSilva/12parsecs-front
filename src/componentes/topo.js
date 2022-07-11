@@ -7,7 +7,7 @@ import UserContext from "./context";
 export default function Topo() {
   
   const {user, carrinho} = useContext(UserContext);
-
+  
     return (
       <Navbar>
           <Link to={"/"}>

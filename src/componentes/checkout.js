@@ -11,15 +11,16 @@ export default function ProdutoComprar() {
   
     const {carrinho, setCarrinho, user} = useContext(UserContext);
     
-    const axiosURL = `http://localhost:5000.com/checkout`
+    const axiosURL = `https://project12parsecs.herokuapp.com/checkout`
     let navigate = useNavigate();
     
     const config = {
         headers: {Authorization: `Bearer ${user.token}`}
     }
-    
+    console.log(user.token);
     function enviaproback(){
       const response = axios.post(axiosURL, carrinho, config);
+
       response.catch(err=> {
         alert("Algo deu errado com sua compra, tente novamente mais tarde");
       });

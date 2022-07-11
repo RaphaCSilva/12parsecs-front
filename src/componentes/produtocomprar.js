@@ -5,19 +5,20 @@ import { useNavigate, useParams } from "react-router-dom";
 import MiniImages from "./mini-images";
 import axios from "axios";
 import UserContext from "./context";
+import userEvent from "@testing-library/user-event";
 
 export default function ProdutoComprar() {
   
   const [principal, setPrincipal] = React.useState("");  
-  const [product, setProduct] = React.useState({});  
+ const [product, setProduct] = React.useState({});  
   const {idproduto} = useParams();
 
-  const {carrinho, setCarrinho} = useContext(UserContext);
+  const {carrinho, setCarrinho, user} = useContext(UserContext);
 
   let navigate = useNavigate();
 
     useEffect(() => {
-      const request = axios.get(`http://localhost:5000.com/products/${idproduto}`);
+      const request = axios.get(`https://project12parsecs.herokuapp.com/products/${idproduto}`);
       request.then( response => {
        setProduct(response.data);
       })
@@ -26,8 +27,9 @@ export default function ProdutoComprar() {
     function recebeimg(img){
       setPrincipal(img);
     }
-    
+    console.log(user.token);
     function montarobj(){
+      
       const obj = {
         name: product.name,
         price: product.price,
