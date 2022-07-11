@@ -1,15 +1,35 @@
 import React, {useContext} from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from 'styled-components';
 import Topo from "./topo";
 import UserContext from "./context";
 import ListaCarrinho from "./listacarrinho";
+import axios from "axios";
 
 
 export default function ProdutoComprar() {
   
-    const {carrinho} = useContext(UserContext);
+    const {carrinho, setCarrinho, user} = useContext(UserContext);
     
+    const axiosURL = `https://project12parsecs.herokuapp.com/checkout`
+    let navigate = useNavigate();
+    
+    const config = {
+        headers: {Authorization: `Bearer ${user.token}`}
+    }
+    
+    function enviaproback(){
+      const response = axios.post(axiosURL, carrinho, config);
+      response.catch(err=> {
+        alert("Algo deu errado com sua compra, tente novamente mais tarde");
+      });
+      response.then( result => {
+        alert("Compra registrada com sucesso");
+        setCarrinho([]);
+        navigate("/");
+      })
+    }
+
     function somar(){
         return carrinho.reduce((anterior, atual) => {
             return (anterior) + (atual.price);
@@ -38,7 +58,7 @@ export default function ProdutoComprar() {
       <h1>
         <span> Total a pagar R$</span> <span> {soma} </span>
       </h1>
-      {(carrinho.length>0) ? <button>COMPRAR AGORA !</button> : <h1> Seu carrinho esta vazio, por favor clique em continuar comprando e preencha seu carrinho</h1>}
+      {(carrinho.length>0) ? <button onClick={enviaproback}>COMPRAR AGORA !</button> : <h1> Seu carrinho esta vazio, por favor clique em continuar comprando e preencha seu carrinho</h1>}
       <Link to={"/"}>
       <button>
         CONTINUAR COMPRANDO !
